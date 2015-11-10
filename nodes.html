@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>	</title>
+	<style>	
+		body {
+			height: 100vh;
+			width: 100%;
+			border: 1px solid black;
+			position: relative;
+			text-align: center;
+		}
+		.nodes {
+			margin: 0 auto;
+		}
+		.node {
+			width:50px;
+			height:50px;
+			border-radius: 50%;
+			background-color: blue;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+		}
+		.button {
+			position: absolute;
+			bottom: 50px;
+			margin: 0 auto;
+			width: 100px;
+			height: 100px;
+			border-radius: 50%;
+			border: 1px solid black;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="nodes">	
+		<div class="node"></div>
+	</div>
+	<button class="button">	
+	</button>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>	
+$(document).ready(function(){
+
+	var nodeCount = [];
+	var posX = $(window).width / 2;
+	var posY = $(window).height / 2;
+
+	function addNode(d) {
+//		var posX = 50 + (Math.random() * 10).toFixed();
+//		var posY = 50 + (Math.random() * 10).toFixed();
+//		posX = posX + (25 * Math.cos(50 / 180 * Math.PI));
+//		posY = posY + (25 * Math.sin(50 / 180 * Math.PI));
+		posX = posX + (50 * Math.cos(20 / 180 * Math.PI));
+		posY = posY + (50 * Math.sin(20 / 180 * Math.PI));
+		d += 20;
+
+		$newNode = $("<div class='node'></div>").css({
+			'left': posX + 'px',
+			'top': posY + 'px'
+		});
+		$newNode.appendTo('.nodes');
+	};
+
+	$('.button').click(function(){
+			addNode(5);
+		});
+	
+	/*
+	var button = $('.button');
+	var node = $('.node');
+	var nodes = $('.nodes');
+	var spots = 0;
+	var x = 50;
+	var y = 50;
+	var position = node.position();
+
+	$('.button').click(function(){
+		
+		x = 30 * ((Math.random() * -1));
+		y = 30 * ((Math.random() * -1));
+
+		$('.nodes').append( "<div class='node' style='top: ' + (position.top + y) + ', left: ' + (position.left + x) + '></div>'" );
+//		$(this).text('left: ' + position.left + (y));
+//		$('.node').css('left', x+"%");
+	});
+*/
+
+})
+
+</script>
+</html>

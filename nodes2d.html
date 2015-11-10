@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>	</title>
+	<style>	
+		html,
+		body {
+		  height: 100%;
+		}
+		body {
+		  background-color: black; 
+			margin:0;
+		}
+		.center {
+		  position: absolute;
+		  left: 50%;
+		  top: 50%;
+		  -webkit-transition: all 1s ease;
+		  -moz-transition: all 1s ease;
+		  -o-transition: all 1s ease;
+		  -ms-transition: all 1s ease;
+		  transition: all 1s ease;
+		}
+		.dot {
+		  position: absolute;
+		  left: 0;
+		  top: 0;
+
+		  background-image: url('sunface.jpg');
+		  background-position: center;
+		  background-size: 60px 60px;
+		  -webkit-border-radius: 50%;
+		  border-radius: 50%;
+		  width: 30px;
+		  height: 30px;
+		  margin: -15px 0 0 -15px;
+		  -webkit-transform: scale(0);
+		  -moz-transform: scale(0);
+		  -o-transform: scale(0);
+		  -ms-transform: scale(0);
+		  transform: scale(0);
+		  opacity: 0;
+		  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+		  filter: alpha(opacity=0);
+		  -webkit-transition: all 1s ease;
+		  -moz-transition: all 1s ease;
+		  -o-transition: all 1s ease;
+		  -ms-transition: all 1s ease;
+		  transition: all 1s ease;
+		}
+		.dot.visible {
+		  opacity: 1;
+		  -ms-filter: none;
+		  filter: none;
+		  -webkit-transform: scale(1);
+		  -moz-transform: scale(1);
+		  -o-transform: scale(1);
+		  -ms-transform: scale(1);
+		  transform: scale(1);
+		}
+		.button {
+			position: absolute;
+			bottom: 50px;
+			right: 50px;
+			margin: 0 auto;
+			width: 100px;
+			height: 100px;
+			border-radius: 50%;
+			border: 2px solid #FFF;
+			background-color: black;
+		}
+
+		div.center {
+		  width: 20px;
+		  height: 20px;
+		  position: absolute;
+		  top: 50%;
+		  left: 50%;
+		  transform: translate(-50%, -50%);
+		  perspective: 1200px;
+		  transform-style: preserve-3d;
+		  animation: rot 6s ease-in-out alternate infinite;
+		}
+		div.center div.dot {
+		  transform-style: preserve-3d;
+		  animation: ripple 2s ease-in-out infinite;
+		}
+		div.center div.dot:nth-of-type(25) {
+		  border-color: #a0cfee;
+		  width: 500px;
+		  height: 500px;
+		  left: -250px;
+		  top: -250px;
+		  animation-delay: 1.25s;
+		}
+		div.center div.dot:nth-of-type(24) {
+		  border-color: #9ccded;
+		  width: 480px;
+		  height: 480px;
+		  left: -240px;
+		  top: -240px;
+		  animation-delay: 1.2s;
+		}
+		div.center div.dot:nth-of-type(23) {
+		  border-color: #98cbed;
+		  width: 460px;
+		  height: 460px;
+		  left: -230px;
+		  top: -230px;
+		  animation-delay: 1.15s;
+		}
+		div.center div.dot:nth-of-type(22) {
+		  border-color: #93c8ec;
+		  width: 440px;
+		  height: 440px;
+		  left: -220px;
+		  top: -220px;
+		  animation-delay: 1.1s;
+		}
+		div.center div.dot:nth-of-type(21) {
+		  border-color: #8fc6eb;
+		  width: 420px;
+		  height: 420px;
+		  left: -210px;
+		  top: -210px;
+		  animation-delay: 1.05s;
+		}
+		div.center div.dot:nth-of-type(20) {
+		  border-color: #8bc4ea;
+		  width: 400px;
+		  height: 400px;
+		  left: -200px;
+		  top: -200px;
+		  animation-delay: 1s;
+		}
+		div.center div.dot:nth-of-type(19) {
+		  border-color: #86c2ea;
+		  width: 380px;
+		  height: 380px;
+		  left: -190px;
+		  top: -190px;
+		  animation-delay: 0.95s;
+		}
+		div.center div.dot:nth-of-type(18) {
+		  border-color: #82c0e9;
+		  width: 360px;
+		  height: 360px;
+		  left: -180px;
+		  top: -180px;
+		  animation-delay: 0.9s;
+		}
+		div.center div.dot:nth-of-type(17) {
+		  border-color: #7ebde8;
+		  width: 340px;
+		  height: 340px;
+		  left: -170px;
+		  top: -170px;
+		  animation-delay: 0.85s;
+		}
+		div.center div.dot:nth-of-type(16) {
+		  border-color: #79bbe7;
+		  width: 320px;
+		  height: 320px;
+		  left: -160px;
+		  top: -160px;
+		  animation-delay: 0.8s;
+		}
+		div.center div.dot:nth-of-type(15) {
+		  border-color: #75b9e7;
+		  width: 300px;
+		  height: 300px;
+		  left: -150px;
+		  top: -150px;
+		  animation-delay: 0.75s;
+		}
+		div.center div.dot:nth-of-type(14) {
+		  border-color: #71b7e6;
+		  width: 280px;
+		  height: 280px;
+		  left: -140px;
+		  top: -140px;
+		  animation-delay: 0.7s;
+		}
+		div.center div.dot:nth-of-type(13) {
+		  border-color: #6cb5e5;
+		  width: 260px;
+		  height: 260px;
+		  left: -130px;
+		  top: -130px;
+		  animation-delay: 0.65s;
+		}
+		div.center div.dot:nth-of-type(12) {
+		  border-color: #68b2e4;
+		  width: 240px;
+		  height: 240px;
+		  left: -120px;
+		  top: -120px;
+		  animation-delay: 0.6s;
+		}
+		div.center div.dot:nth-of-type(11) {
+		  border-color: #64b0e3;
+		  width: 220px;
+		  height: 220px;
+		  left: -110px;
+		  top: -110px;
+		  animation-delay: 0.55s;
+		}
+		div.center div.dot:nth-of-type(10) {
+		  border-color: #5faee3;
+		  width: 200px;
+		  height: 200px;
+		  left: -100px;
+		  top: -100px;
+		  animation-delay: 0.5s;
+		}
+		div.center div.dot:nth-of-type(9) {
+		  border-color: #5bace2;
+		  width: 180px;
+		  height: 180px;
+		  left: -90px;
+		  top: -90px;
+		  animation-delay: 0.45s;
+		}
+		div.center div.dot:nth-of-type(8) {
+		  border-color: #57aae1;
+		  width: 160px;
+		  height: 160px;
+		  left: -80px;
+		  top: -80px;
+		  animation-delay: 0.4s;
+		}
+		div.center div.dot:nth-of-type(7) {
+		  border-color: #52a7e0;
+		  width: 140px;
+		  height: 140px;
+		  left: -70px;
+		  top: -70px;
+		  animation-delay: 0.35s;
+		}
+		div.center div.dot:nth-of-type(6) {
+		  border-color: #4ea5e0;
+		  width: 120px;
+		  height: 120px;
+		  left: -60px;
+		  top: -60px;
+		  animation-delay: 0.3s;
+		}
+		div.center div.dot:nth-of-type(5) {
+		  border-color: #4aa3df;
+		  width: 100px;
+		  height: 100px;
+		  left: -50px;
+		  top: -50px;
+		  animation-delay: 0.25s;
+		}
+		div.center div.dot:nth-of-type(4) {
+		  border-color: #45a1de;
+		  width: 80px;
+		  height: 80px;
+		  left: -40px;
+		  top: -40px;
+		  animation-delay: 0.2s;
+		}
+		div.center div.dot:nth-of-type(3) {
+		  border-color: #419fdd;
+		  width: 60px;
+		  height: 60px;
+		  left: -30px;
+		  top: -30px;
+		  animation-delay: 0.15s;
+		}
+		div.center div.dot:nth-of-type(2) {
+		  border-color: #3d9cdd;
+		  width: 40px;
+		  height: 40px;
+		  left: -20px;
+		  top: -20px;
+		  animation-delay: 0.1s;
+		}
+		div.center div.dot:nth-of-type(1) {
+		  border-color: #389adc;
+		  width: 20px;
+		  height: 20px;
+		  left: -10px;
+		  top: -10px;
+		  animation-delay: 0.05s;
+		}
+		@keyframes ripple {
+		  0% {
+		    transform: translateZ(0) translate3d(0, 0, 0) rotate(0);
+		  }
+		  33% {
+		    transform: translateZ(20px) translate3d(0, 0, 0);
+		  }
+		  67% {
+		    transform: translateZ(-20px) translate3d(0, 0, 0);
+		  }
+		  100% {
+		    transform: translateZ(0) translate3d(0, 0, 0);
+		  }
+		}
+
+
+	</style>
+</head>
+<body>
+	<div class="center"></div>
+	<button class="button">	
+	</button>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="jquery.zoomooz.js"></script>
+
+<script>	
+$(document).ready(function(){
+
+	function circumference(radius) {
+	  return 2 * Math.PI * radius;
+	}
+
+	function getPointFromAngle(angle, distance) {
+	  switch (angle) {
+	    case Math.PI:
+	      return {
+	        x: -distance,
+	        y: 0
+	      };
+	    case Math.PI * 0.5:
+	      return {
+	        x: 0,
+	        y: distance
+	      };
+	    case Math.PI * 1.5:
+	      return {
+	        x: 0,
+	        y: -distance
+	      };
+	    case 0:
+	      return {
+	        x: distance,
+	        y: 0
+	      };
+	    default:
+	      return {
+	        x: Math.cos(angle) * distance,
+	        y: Math.sin(angle) * distance
+	      };
+	  }
+	}
+	var Spiral = (function() {
+	  var point = {
+	      x: 0,
+	      y: 0,
+	      angle: 0,
+	      radius: 0
+	    },
+	    width = 30,
+	    minx = 0,
+	    miny = 0,
+	    maxx = 0,
+	    maxy = 0;
+
+	  function getNextPoint() {
+	    var max = Math.max(1, circumference(point.radius) / width),
+	      radius = point.radius + width / max,
+	      angle = point.angle + 1.5 * Math.PI * width / circumference(radius),
+	      p = getPointFromAngle(point.angle, point.radius);
+	    p.radius = radius;
+	    p.angle = angle;
+	    p.width = width;
+	    return p;
+	  }
+
+	  function scale() {
+	    var w = Math.max(2 * maxx, -2 * minx) + width,
+	      h = Math.max(2 * maxy, -2 * miny) + width,
+	      scalex = Math.min(1, $(window).width() / w),
+	      scaley = Math.min(1, $(window).height() / h),
+	      scale = Math.min(scalex, scaley);
+	    $('.center').css('transform', 'scale(' + scale + ')');
+	  }
+	  return {
+	    next: function() {
+	      point = getNextPoint();
+	      point = getNextPoint();
+	      point.$ = $('<div>')
+	        .addClass('dot')
+	        .css({
+	          left: point.x,
+	          top: point.y,
+	          width: width,
+	          height: width
+	        })
+	        .prependTo('.center');
+	      (function($elem) {
+	        setTimeout(function() {
+	          $elem.addClass('visible');
+	        }, 0);
+	      })(point.$);
+	      maxx = Math.max(maxx, point.x);
+	      minx = Math.min(minx, point.x);
+	      maxy = Math.max(maxy, point.y);
+	      miny = Math.min(miny, point.y);
+	      scale();
+	      //Adding Zoomtarget here and in 388
+	      
+	    }
+	  };
+
+	})();
+
+	$('.button').click(function() {
+	    Spiral.next();
+	    $("div.dot").zoomTarget();
+	});
+
+})
+
+</script>
+</html>
