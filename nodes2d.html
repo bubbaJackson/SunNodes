@@ -363,8 +363,8 @@ $(document).ready(function(){
 
 	  function getNextPoint() {
 	    var max = Math.max(1, circumference(point.radius) / width),
-	      radius = point.radius + width / max +1,
-	      angle = point.angle + 2 * Math.PI * width / circumference(radius),
+	      radius = point.radius + width / max + 1.5,								// space to the center
+	      angle = point.angle + 2 * Math.PI * width / circumference(radius),		// space between the dots
 	      p = getPointFromAngle(point.angle, point.radius);
 	    p.radius = radius;
 	    p.angle = angle;
